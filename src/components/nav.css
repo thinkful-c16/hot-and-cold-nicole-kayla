@@ -1,15 +1,22 @@
-ul {
-  list-style: none
+a:hover {
+  color: #66FCF1
 }
 
-ul, li {
-  margin: 10px 10px;
-  padding-left: 0;
-  padding-right: 30px;
-  display: inline-block;
-}
-
-ul, li, a {
+a, a:visited {
   text-decoration: none;
+  color: #F5F5F5
 }
 
+ul {
+  padding-left: 0;
+}
+
+.nav-item {
+  list-style: none;
+  display: inline-block;
+  font-weight: 600
+}
+
+.nav-item:last-child {
+  float:right;
+}

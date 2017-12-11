@@ -6,7 +6,7 @@ import './nav.css';
 
 export default function NavBar(props) {
     const links = props.links.map((link, index) => (
-        <li key={index}>
+        <li className='nav-item' key={index}>
             <a href={link.href}>
                 {link.text}
             </a>

@@ -1,0 +1,44 @@
+.game-wrapper {
+  width: 100%;
+  margin: auto;
+}
+
+form {
+  border: 1px solid #66FCF1;
+  border-radius: 5px;
+  text-align: center;
+  color: #F5F5F5
+}
+
+legend {
+  margin-top: 1em
+}
+
+input {
+  width: 50%
+}
+
+button {
+  width: 50%;
+  height: 40px;
+  background-color: #45A29B;
+  border: 1px solid #66FCF1;
+  color: #F5F5F5;
+  font-size: 1.5em
+}
+
+h1 {
+  text-align: center;
+  font-weight: 900;
+  color: #66FCF1
+}
+
+p {
+  font-weight: 400
+}
+
+.active-number {
+  color: #66FCF1;
+  font-weight: 900;
+  font-size: 2em
+}
