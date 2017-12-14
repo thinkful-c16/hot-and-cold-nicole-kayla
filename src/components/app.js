@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
   handleGuess(input) {
     this.setState({
-      currentUserGuess:input
+      currentUserGuess: input
     })
   }
 
@@ -44,9 +44,11 @@ export default class App extends React.Component {
 
   generateFeedback() {
     let correctAnswer = this.state.randomNumber;
+
     let userGuess = this.state.currentUserGuess;
-    if (userGuess === correctAnswer) {
-      this.setState({guessFeedback:this.state.feedbackOptions[4]});
+
+    if (userGuess == correctAnswer) {
+      this.setState({guessFeedback: this.state.feedbackOptions[4]});
     }
     else if (userGuess - correctAnswer <= 10 || userGuess - correctAnswer >= -10 ) {
       this.setState({guessFeedback: this.state.feedbackOptions[0]});
