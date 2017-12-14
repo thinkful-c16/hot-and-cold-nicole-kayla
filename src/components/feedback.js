@@ -1,5 +1,5 @@
 import React from 'react';
-let feedbackResponse;
+// let feedbackResponse;
 
 export default function Feedback(props){
     return (

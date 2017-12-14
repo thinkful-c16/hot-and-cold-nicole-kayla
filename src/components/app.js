@@ -4,7 +4,7 @@ import './app.css';
 import NavBar from './nav';
 import Game from './game';
 import Feedback from './feedback';
-import feedbackResponse from './feedback';
+// import feedbackResponse from './feedback';
 
 const links = [{
     text: 'WHAT?',
@@ -46,19 +46,19 @@ export default class App extends React.Component {
     let correctAnswer = this.state.randomNumber;
     let userGuess = this.state.currentUserGuess;
     if (userGuess === correctAnswer) {
-     return this.feedbackOptions[4];
+      this.setState({guessFeedback:this.state.feedbackOptions[4]});
     }
     else if (userGuess - correctAnswer <= 10 || userGuess - correctAnswer >= -10 ) {
-      return this.feedbackOptions[0];
+      this.setState({guessFeedback: this.state.feedbackOptions[0]});
     }
     else if (userGuess - correctAnswer <= 20 || userGuess - correctAnswer >= -20 ) {
-     return this.feedbackOptions[2];
+      this.setState({guessFeedback: this.state.feedbackOptions[2]});
     }
     else if (userGuess - correctAnswer <= 30 || userGuess - correctAnswer >= -30 ) {
-      return this.feedbackOptions[3];
+      this.setState({guessFeedback: this.state.feedbackOptions[3]});
     }
     else {
-      return this.feedbackOptions[1];
+      this.setState({guessFeedback: this.state.feedbackOptions[1]});
     }
   }
 
@@ -69,7 +69,7 @@ export default class App extends React.Component {
         <NavBar links={links} />
         <Game onSubmit={() => this.handleSubmit()}
           onChange={(input) => this.handleGuess(input)}/>
-        <Feedback onSubmit={(feedbackResponse) => this.generateFeedback(feedbackResponse)}/>
+        <Feedback feedbackResponse={this.state.guessFeedback}/>
       </div>
     )
   }
