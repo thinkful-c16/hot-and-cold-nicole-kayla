@@ -18,7 +18,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      randomNumber: 10,
+      randomNumber: '',
       currentUserGuess: '',
       guessHistory: [],
       guessFeedback: '',
@@ -28,9 +28,13 @@ export default class App extends React.Component {
     }
   }
 
-  // generateRandomNumber() {
-  //   console.log(Math.floor(Math.random() * 100))
-  // }
+
+  generateRandomNumber() {
+    let number = Math.floor(Math.random() * 100);
+    this.setState({
+      randomNumber: number
+    })
+  }
 
   handleGuess(input) {
     this.setState({
@@ -67,6 +71,10 @@ export default class App extends React.Component {
       this.setState({guessFeedback: this.state.feedbackOptions[4]});
       
     }
+  }
+
+  componentDidMount(props) {
+  this.generateRandomNumber();
   }
 
   render() {
