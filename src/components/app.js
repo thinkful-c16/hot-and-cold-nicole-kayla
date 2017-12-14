@@ -5,14 +5,6 @@ import NavBar from './nav';
 import Game from './game';
 import Feedback from './feedback';
 
-const links = [{
-    text: 'WHAT?',
-    href: '#'
-}, {
-    text: '+NEW GAME',
-    href: '#'
-}];
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -24,6 +16,20 @@ export default class App extends React.Component {
       feedbackOptions: ['hot', 'cold', 'warm', 'cool', 'Correct!' ]
     }
   }
+
+  getState(){
+    this.setState({
+      randomNumber: '',
+      currentUserGuess: '',
+      guessHistory: [],
+      guessFeedback: '',
+      feedbackOptions: ['hot', 'cold', 'warm', 'cool', 'Correct!' ]
+    })
+  }
+
+  // newGame(){
+  //   this.generateRandomNumber();
+  // }
 
   attempts(){
     return this.state.guessHistory.length;
@@ -74,14 +80,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount(props) {
-  this.generateRandomNumber();
+    this.generateRandomNumber();
   }
 
   render() {
     return (
 
       <div className="wrapper">
-        <NavBar links={links} />
+        <NavBar newGame/>
         <Game onSubmit={() => this.handleSubmit()}
           onChange={(input) => this.handleGuess(input)}
           attempts={() => this.attempts()} />

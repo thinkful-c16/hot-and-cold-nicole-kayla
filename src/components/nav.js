@@ -5,13 +5,24 @@ import React from 'react';
 import './nav.css';
 
 export default function NavBar(props) {
-    const links = props.links.map((link, index) => (
-        <li className='nav-item' key={index}>
-            <a href={link.href}>
-                {link.text}
-            </a>
-        </li>
-    ));
+    function newGame(event) {
+        event.preventDefault();
+        window.location.reload();
+    }
+    const links = (
+        <ul>
+            <li className='nav-item'>
+                <a href="#">
+                    WHAT?
+                </a>
+            </li>
+            <li className='nav-item'>
+                <a href="#" onClick={newGame}>
+                    +NEW GAME
+                </a>
+            </li>
+        </ul>
+    );
 
     return (
         <div className="nav-bar">
