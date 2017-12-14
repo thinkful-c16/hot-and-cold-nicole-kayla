@@ -12,11 +12,33 @@ const links = [{
     href: '#'
 }];
 
-export default function () {
-  return (
-    <div className="wrapper">
-      <NavBar links={links} />
-      <Game />
-    </div>
-  )
+// export default function () {
+//   return (
+//     <div className="wrapper">
+//       <NavBar links={links} />
+//       <Game />
+//     </div>
+//   )
+// }
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      randomNumber: '',
+      currentUserGuess: '',
+      guessHistory: [],
+      guessFeedback: '',
+      feedbackOptions: ''
+    }
+  }
+
+  render() {
+    return (
+      <div className="wrapper">
+        <NavBar links={links} />
+        <Game />
+      </div>
+    )
+  }
 }
