@@ -7,7 +7,7 @@ import './nav.css';
 export default function NavBar(props) {
     function newGame(event) {
         event.preventDefault();
-        window.location.reload();
+        props.test();
     }
     const links = (
         <ul>

@@ -11,7 +11,7 @@ export default function Game(props) {
       <form>
         <legend>Make Your Guess!</legend>
         <p>
-          <input onChange={e => props.onChange(e.target.value)} type="text" placeholder="Enter Your Guess"/>
+          <input id="userInput" onChange={e => props.onChange(e.target.value)} type="text" placeholder="Enter Your Guess"/>
         </p>
         <p>
           <button onClick={(e) => {
