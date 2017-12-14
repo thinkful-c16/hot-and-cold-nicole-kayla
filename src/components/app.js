@@ -12,15 +12,6 @@ const links = [{
     href: '#'
 }];
 
-// export default function () {
-//   return (
-//     <div className="wrapper">
-//       <NavBar links={links} />
-//       <Game />
-//     </div>
-//   )
-// }
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -33,11 +24,18 @@ export default class App extends React.Component {
     }
   }
 
+  handleGuess(input) {
+    this.setState({
+      currentUserGuess:input
+    })
+  }
+
   render() {
     return (
       <div className="wrapper">
         <NavBar links={links} />
-        <Game />
+        <Game onChange={(input) => this.handleGuess(input)}/>
+        <Game onSubmit={() => console.log('grabs the user`/s guess')}/>
       </div>
     )
   }
