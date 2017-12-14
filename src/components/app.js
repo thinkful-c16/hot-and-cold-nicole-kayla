@@ -30,12 +30,22 @@ export default class App extends React.Component {
     })
   }
 
+  handleSubmit() {
+    const guess = this.state.currentUserGuess;
+    this.setState({
+      guessHistory: [...this.state.guessHistory, guess]
+      //grab currentUserGuess and push to array
+      //create new variable for guess history and use the spreadoperator to add new numbers to the array
+    })
+  }
+
   render() {
     return (
+
       <div className="wrapper">
         <NavBar links={links} />
-        <Game onChange={(input) => this.handleGuess(input)}/>
-        <Game onSubmit={() => console.log('grabs the user`/s guess')}/>
+        <Game onSubmit={() => this.handleSubmit()}
+          onChange={(input) => this.handleGuess(input)}/>
       </div>
     )
   }
