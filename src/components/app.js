@@ -4,7 +4,6 @@ import './app.css';
 import NavBar from './nav';
 import Game from './game';
 import Feedback from './feedback';
-// import feedbackResponse from './feedback';
 
 const links = [{
     text: 'WHAT?',
@@ -23,11 +22,12 @@ export default class App extends React.Component {
       guessHistory: [],
       guessFeedback: '',
       feedbackOptions: ['hot', 'cold', 'warm', 'cool', 'Correct!' ]
-      //if they are within 10, say "hot", if they are within 20 say "warm", 
-      //within 30 say "cool", anythign else say cold
     }
   }
 
+  attempts(){
+    return this.state.guessHistory.length;
+  }
 
   generateRandomNumber() {
     let number = Math.floor(Math.random() * 100);
@@ -83,7 +83,8 @@ export default class App extends React.Component {
       <div className="wrapper">
         <NavBar links={links} />
         <Game onSubmit={() => this.handleSubmit()}
-          onChange={(input) => this.handleGuess(input)}/>
+          onChange={(input) => this.handleGuess(input)}
+          attempts={() => this.attempts()} />
         <Feedback feedbackResponse={this.state.guessFeedback}/>
       </div>
     )

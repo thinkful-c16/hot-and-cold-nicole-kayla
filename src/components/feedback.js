@@ -1,6 +1,5 @@
 import React from 'react';
 import './feedback.css'
-// let feedbackResponse;
 
 export default function Feedback(props){
     return (

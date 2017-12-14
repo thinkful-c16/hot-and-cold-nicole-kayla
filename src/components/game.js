@@ -19,7 +19,7 @@ export default function Game(props) {
             props.onSubmit()}} type="submit">SUBMIT</button>
         </p>
         <p className="game-counter">
-          Guess # <span className="active-number">0</span> !
+          Guess # <span className="active-number">{props.attempts()}</span> !
         </p>
       </form>
     </div> 
