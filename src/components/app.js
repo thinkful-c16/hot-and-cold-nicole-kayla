@@ -3,6 +3,8 @@ import './app.css';
 
 import NavBar from './nav';
 import Game from './game';
+import Feedback from './feedback';
+import feedbackResponse from './feedback';
 
 const links = [{
     text: 'WHAT?',
@@ -16,11 +18,13 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      randomNumber: '',
+      randomNumber: 10,
       currentUserGuess: '',
       guessHistory: [],
       guessFeedback: '',
-      feedbackOptions: ''
+      feedbackOptions: ['hot', 'cold', 'warm', 'cool', 'Correct!' ]
+      //if they are within 10, say "hot", if they are within 20 say "warm", 
+      //within 30 say "cool", anythign else say cold
     }
   }
 
@@ -34,9 +38,28 @@ export default class App extends React.Component {
     const guess = this.state.currentUserGuess;
     this.setState({
       guessHistory: [...this.state.guessHistory, guess]
-      //grab currentUserGuess and push to array
-      //create new variable for guess history and use the spreadoperator to add new numbers to the array
     })
+    this.generateFeedback()
+  }
+
+  generateFeedback() {
+    let correctAnswer = this.state.randomNumber;
+    let userGuess = this.state.currentUserGuess;
+    if (userGuess === correctAnswer) {
+     return this.feedbackOptions[4];
+    }
+    else if (userGuess - correctAnswer <= 10 || userGuess - correctAnswer >= -10 ) {
+      return this.feedbackOptions[0];
+    }
+    else if (userGuess - correctAnswer <= 20 || userGuess - correctAnswer >= -20 ) {
+     return this.feedbackOptions[2];
+    }
+    else if (userGuess - correctAnswer <= 30 || userGuess - correctAnswer >= -30 ) {
+      return this.feedbackOptions[3];
+    }
+    else {
+      return this.feedbackOptions[1];
+    }
   }
 
   render() {
@@ -46,6 +69,7 @@ export default class App extends React.Component {
         <NavBar links={links} />
         <Game onSubmit={() => this.handleSubmit()}
           onChange={(input) => this.handleGuess(input)}/>
+        <Feedback onSubmit={(feedbackResponse) => this.generateFeedback(feedbackResponse)}/>
       </div>
     )
   }
